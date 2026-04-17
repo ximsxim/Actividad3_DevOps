@@ -25,7 +25,9 @@ jobs:
         pip install -r app/requirements.txt pytest
 
     - name: Run tests
-      run: pytest app/tests/ -v
+      run: |
+        cd app
+        python -m pytest tests/ -v
 
     - name: Build Docker image
       run: docker build -t mi-app-flask app/
