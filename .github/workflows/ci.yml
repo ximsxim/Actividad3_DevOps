@@ -24,11 +24,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r app/requirements.txt pytest
 
-    - name: Run tests
+        - name: Run tests
       run: |
-        cd app
-        pytest tests/ -v
-        cd ..
+        pytest app/tests/ -v
 
     - name: Build Docker image
       run: |
