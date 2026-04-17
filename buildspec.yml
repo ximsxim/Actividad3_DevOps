@@ -2,24 +2,22 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      python: 3.9
     commands:
-      - echo "Instalando dependencias para pruebas"
+      - echo "=== FASE INSTALL: Instalando dependencias ==="
       - pip install -r app/requirements.txt pytest
   pre_build:
     commands:
-      - echo "Ejecutando pruebas unitarias"
+      - echo "=== FASE PRE_BUILD: Ejecutando pruebas unitarias ==="
       - cd app
       - pytest tests/ -v
       - cd ..
   build:
     commands:
-      - echo "Construyendo imagen Docker"
+      - echo "=== FASE BUILD: Construyendo imagen Docker ==="
       - docker build -t mi-app-flask app/
   post_build:
     commands:
-      - echo "Build completado exitosamente"
+      - echo "=== FASE POST_BUILD: Build completado exitosamente ==="
 artifacts:
   files:
     - '**/*'
